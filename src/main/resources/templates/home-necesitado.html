@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head th:replace="fragments/commons::head">
+
+</head>
+<body class="bg-form-necesitado">
+    <nav th:replace="fragments/commons::nav">
+    </nav>
+    <h1><b>Hola, {necesitado_registrado}</b></h1>
+    <h3>Ya no estás solo!</h3>
+
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    Mis datos personales
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-mg-12">
+                            <div class="col text-inf">
+                                <div class="mb-3">
+                                    <label class="form-label text-start">Nombre de Usuario: {nombre_de_usuario}</label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label text-start">Nombre: {nombre}</label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label text-start">Apellido: {apellido}</label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-start">Correo electrónico: {correo_electronico}</label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label text-start">Ubicación: {ubicacion}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+
+                            <label class="form label text-start">Necesidad:</label>
+                            <p>{necesidad}</p>
+
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Cambiar datos</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Te ayudará:
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="text-inf">Datos de la persona que va a quierer ayudar</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Agrega los enlaces a los scripts de Bootstrap al final del cuerpo del documento -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.min.js"></script>
+        <script>
+            // Cerrar panel al hacer clic en el botón
+            $('.accordion-button').click(function() {
+                var $collapse = $(this).closest('.accordion-item').find('.collapse');
+                $('.collapse').not($collapse).collapse('hide');
+            });
+        </script>
+    </div>
+</body>
+</html>

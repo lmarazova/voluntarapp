@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head th:replace="fragments/commons::head">
+
+</head>
+<body class="bg-form">
+<nav th:replace="fragments/commons::nav">
+</nav>
+<div class="align-items-center mb-3" style="height: calc(100vh - 56px);">
+    <div class="text-center">
+        <h4>Registrar Nuevo Usuario Voluntario</h4>
+        <div class="linea-negra">
+            <hr>
+        </div>
+        <div class="formulario card mx-auto mb-3" style="max-width: 800px; background-color: rgba(0, 0, 0, 0)">
+            <div class="card-body" style="background-color:rgba(0, 0, 0, 0.7)">
+                <form class="row"
+                      th:method="post"
+                      th:action="@{/registrar-usuario-voluntario}"
+                      th:object="${registroUsuarioVoluntarioForm}">
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <div class="form-group"
+                                         th:class="${#fields.hasErrors('nombreUsuario')} ? 'has-error' : ''">
+                                        <label for="nombreUsuario"><h4>Nombre de Usuario<span style="color: red">*</span></h4></label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="nombreUsuario"
+                                               th:field="*{nombreUsuario}" required minlength="3" maxlength="15"
+                                               th:classappend="${#fields.hasErrors('nombreUsuario')} ? 'is-invalid' : ''">
+
+                                        <small th:if="${#fields.hasErrors('nombreUsuario')}"
+                                               th:errors="*{nombreUsuario}"
+                                                class="error-message">
+                                            Mensaje de error
+                                        </small>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="contrasenya"
+                                           class="h4 mb-2">Contraseña<span style="color: red">*</span></label>
+                                </div>
+                                <input type="password" required minlength="6" maxlength="15"
+                                       class="form-control"
+                                       id="contrasenya"
+                                       name="contrasenya"
+                                       th:classappend="${#fields.hasErrors('contrasenya')} ? 'bg-danger'"
+                                />
+                                <small th:errors="${registroUsuarioVoluntarioForm.contrasenya}">Password error message</small>
+                                <div th:if="${errorVisible}" class="alert alert-danger">
+                                    <p th:text="${errorMessage}"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-holder text-white textCol d-flex justify-content-center">
+                                    <label for="confirmarContrasenya" class="h4 mb-2">Confirm Password<span style="color: red">*</span></label>
+                                </div>
+                                <input type="password"
+                                       class="form-control"
+                                       id="confirmarContrasenya"
+                                       name="confirmarContrasenya"
+                                       th:classappend="${#fields.hasErrors('ConfirmarContrasenya')} ? 'bg-danger'"
+                                />
+                                <small th:errors="${registroUsuarioVoluntarioForm.confirmarContrasenya}">Password error message</small>
+                            </div>
+                            <div class="mb-3">
+                            <label for="nombre"
+                                   class="form-label"><h4>Nombre</h4></label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="nombre"
+                                   name="nombre"
+                                   th:field="*{nombre}"
+                                   th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''"/>
+                            <small  class="text-danger"
+                                    th:if="${#fields.hasErrors('nombre')}"
+                                    th:errors="${registroUsuarioVoluntarioForm.nombre}">mensaje de error</small>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="apellido"
+                                   class="form-label"><h4>Apellido</h4></label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="apellido"
+                                   name="apellido"
+                                   th:field="*{apellido}"
+                                   th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''"/>
+
+                            <small class="text-danger"
+                                   th:if="${#fields.hasErrors('apellido')}"
+                                   th:errors="${registroUsuarioVoluntarioForm.apellido}">mensaje de error</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="correoElectronico"
+                                   class="form-label"><h4>Correo electrónico<span style="color: red">*</span></h4>
+                            </label>
+                            <input type="email" required
+                                   class="form-control"
+                                   id="correoElectronico"
+                                   name="correoElectronico">
+                            <small class="text-danger"
+                                   th:if="${#fields.hasErrors('correoElectronico')}"
+                                   th:errors="${registroUsuarioVoluntarioForm.correoElectronico}">Mensaje de error en el correo</small>        </div>
+                            <div class="mb-3">
+                                <label for="ubicacion" class="form-label"><h4>Ubicación<span style="color: red">*</span></h4></label>
+                                <select class="form-select" id="ubicacion" name="ubicacion">
+                                    <option selected>Elíge...</option>
+                                    <!-- Iterar sobre las ubicaciones y crear opciones para el select -->
+                                    <option th:each="ubicacion : ${ubicaciones}" th:value="${ubicacion}" th:text="${ubicacion.replace('_', ' ')}"></option>
+                                </select>
+                                <small class="text-danger"
+                                       th:if="${#fields.hasErrors('ubicacion')}"
+                                       th:errors="${registroUsuarioVoluntarioForm.ubicacion}">Tiene que haber por lo menos una opción seleccionada.</small>
+                            </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <h4 class="form-label">Habilidades</h4>
+                            <div style="text-align: left">
+                                <!-- Iterar sobre los valores del enum Servicio -->
+                                <div th:each="servicio : ${T(grupo7.volutarapp.model.enums.Servicio).values()}" style="display: inline-block; margin-right: 10px;">
+                                    <label style="display: inline-block; margin-right: 10px;">
+                                        <input type="checkbox" id="checkbox-${servicio.name()}" name="habilidades" th:value="${servicio.name()}">
+                                        <!-- Usar el nombre del servicio con un reemplazo de guión bajo por espacio -->
+                                        <span th:text="${#strings.replace(servicio.name(), '_', ' ')}"></span>
+                                    </label>
+                                </div><br>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Conectar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Agrega los enlaces a los scripts de Bootstrap al final del cuerpo del documento -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

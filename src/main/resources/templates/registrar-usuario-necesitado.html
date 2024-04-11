@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head th:replace="fragments/commons::head">
+
+</head>
+<body class="bg-form">
+    <nav th:replace="fragments/commons::nav">
+    </nav>
+    <div class="align-items-center mb-3" style="height: calc(100vh - 56px);">
+        <div class="text-center">
+            <h4>Registrar Nuevo Usuario Necesitado</h4>
+            <div class="linea-negra">
+                <hr>
+            </div>
+            <div class="formulario card mx-auto mb-3" style="max-width: 800px; background-color: rgba(0, 0, 0, 0)">
+                <div class="card-body" style="background-color:rgba(0, 0, 0, 0.7)">
+                    <form class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="nombreUsuario" class="form-label"><h4>Nombre de Usuario <span
+                                        style="color: red">*</span></h4></label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="nombreUsuario"
+                                       name="nombreUsuario">
+                                <small>Ingresa tu nombre.</small>
+                                <small>Mensaje de error</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="contrasena"
+                                       class="form-label"><h4>Contraseña<span style="color: red">*</span></h4>
+                                </label>
+                                <input type="password"
+                                       class="form-control"
+                                       id="contrasena"
+                                       name="contrasena">
+                                <small>Mensaje de contreseña incorrecta</small>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="confirmarContrasena"
+                                       class="form-label"><h4>Confirmar Contraseña<span style="color: red" ;>*</span></h4>
+                                </label>
+                                <input type="password"
+                                       class="form-control"
+                                       id="confirmarContrasena">
+                                <small>Mensaje de no coincidir contraseñas</small>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="nombre"
+                                       class="form-label"><h4>Nombre</h4></label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="nombre">
+                                <small>mensaje de error</small>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="apellido"
+                                       class="form-label"><h4>Apellido</h4></label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="apellido">
+                                <small>Mensaje de error</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="correoElectronico"
+                                       class="form-label"><h4>Correo electrónico<span style="color: red">*</span></h4>
+                                </label>
+                                <input type="email"
+                                       class="form-control"
+                                       id="correoElectronico"
+                                       name="correoElectronico">
+                                <small>Mensaje de error en el correo</small>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="ubicacion"
+                                       class="form-label"><h4>Ubicación<span style="color: red">*</span></h4></label>
+                                <select class="form-select" id="ubicacion" required>
+                                    <option selected>Elíge...</option>
+                                    <option value="1">Andalucía</option>
+                                    <option value="2">Aragón</option>
+                                    <option value="3">Asturias (Principado de Asturias)</option>
+                                    <option value="4">Cantabria</option>
+                                    <option value="5">Castilla-La Mancha</option>
+                                    <option value="6">Castilla y León</option>
+                                    <option value="7">Cataluña (Catalunya)</option>
+                                    <option value="8">Comunidad de Madrid</option>
+                                    <option value="9">Comunidad Foral de Navarra (Navarra)</option>
+                                    <option value="10">Comunidad Valenciana (Comunitat Valenciana)</option>
+                                    <option value="11">Extremadura</option>
+                                    <option value="12">Galicia</option>
+                                    <option value="13">La Rioja</option>
+                                    <option value="14">País Vasco (Euskadi o País Vasco)</option>
+                                    <option value="15">Región de Murcia</option>
+
+                                </select>
+                                <small>Tiene que haber por lo menos una opción seleccionada.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="habilidades"
+                                       class="form-label"><h4>Decripción necesidad</h4>
+                                </label>
+                                <select class="form-select" id="habilidades">
+                                    <option selected>Elíge...</option>
+                                    <option value="1">Alimentos y bebidas</option>
+                                    <option value="2">Ropa y calzado</option>
+                                    <option value="3">Asistencia médica</option>
+                                    <option value="4">Apoyo emocional</option>
+                                    <option value="5">Ayuda con el transporte</option>
+                                    <option value="6">Tutoría académica</option>
+                                    <option value="7">Mantemimiento de hogar</option>
+                                    <option value="8">Cuidado de mascotas</option>
+                                    <option value="9">Orientación legal</option>
+                                    <option value="10">Asistencia para personas mayores</option>
+                                    <option value="11">Asistencia para personas con discapacidad</option>
+                                    <option value="12">Servicios de traducción e interpretación</option>
+                                    <option value="13">Asistencia con trámites administrativos</option>
+                                    <option value="14">Ayuda con limpieza del hogar</option>
+                                    <option value="15">Suministros básicos de higiende</option>
+                                    <option value="16">Asesoramiento financiero</option>
+                                    <option value="17">Entrega de medicamento</option>
+                                    <option value="18">Asistencia con la tecnología y la informática</option>
+                                    <option value="19">Ayuda parala búsqueda de empleo</option>
+                                </select>
+                                <small>Tiene que haber por lo menos una opción seleccionada.</small>
+
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Conectar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Agrega los enlaces a los scripts de Bootstrap al final del cuerpo del documento -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
